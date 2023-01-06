@@ -1,14 +1,37 @@
 {
-  "name": "my-storybook",
-  "private": true,
-  "version": "0.0.0",
+  "name": "afrcode-storybook-components",
+  "private": false,
+  "version": "0.1.0",
+  "license": "MIT",
+  "typings": "dist/main.d.ts",
+  "main": "dist/main.js",
+  "repository": {
+    "url": "https://github.com/IngAndresRodriguez/03-my-storybook-",
+    "type": "git"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "typescript": ">=4"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ]
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
+    "start": "start-storybook -p 6006",
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "yarn clean && tsc && yarn copy-files",
     "preview": "vite preview",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "chromatic": "npx chromatic --project-token=0c97a0713c05"
+    "chromatic": "npx chromatic --project-token=0c97a0713c05",
+    "clean": "rimraf dist/",
+    "copy-files": "copyfiles -u 1 src/**/*.css dist/"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -28,9 +51,20 @@
     "@vitejs/plugin-react": "^3.0.0",
     "babel-loader": "^8.3.0",
     "chromatic": "^6.14.0",
+    "copyfiles": "^2.4.1",
+    "rimraf": "^3.0.2",
+    "semantic-release": "^19.0.5",
     "typescript": "^4.9.3",
     "vite": "^4.0.0"
   },
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/changelog",
+    "@semantic-release/github",
+    "@semantic-release/npm",
+    "@semantic-release/git"
+  ],
   "readme": "ERROR: No README data found!",
-  "_id": "my-storybook@0.0.0"
+  "_id": "afrcode-storybook-components@0.1.0"
 }
