@@ -21,6 +21,10 @@ export interface MyLabelProps {
    * Color perzonalizado del texto
    */
   fontColor?: string;
+  /**
+   * Perzonaliza el color de fondo del texto
+   */
+  backgroundColor?: string;
 
 }
 
@@ -29,13 +33,15 @@ export const MyLabel = ({
   size = 'normal',
   color = 'primary',
   allCaps = false,
-  fontColor
+  fontColor,
+  backgroundColor = 'transparent'
 }: MyLabelProps) => {
   return (
     <span
       className={['label', size, `text-${color}`, fontColor].join(' ')}
       style={{
-        color: fontColor
+        color: fontColor,
+        backgroundColor
       }}
     >
       {(allCaps) ? label.toUpperCase() : label}
